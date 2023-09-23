@@ -7,8 +7,12 @@ const PostSchema = mongoose.Schema({
     imgUrl: {
         type: String
     },
-    status: {
+    caption: {
         type: String
+    },
+    status: {
+        type: String,
+        default: 'NF'
         // NF - NOT FLAGGED
         // CF - CURRENTLY FLAGGED
         // FN - FLAGGED AND NO MORPH FOUND

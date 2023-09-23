@@ -6,6 +6,7 @@ import cors from 'cors'
 
 import authRoutes from './Routes/Auth.js'
 import userRoutes from './Routes/User.js'
+import postRoutes from './Routes/Posts.js'
 
 const app = express()
 
@@ -28,6 +29,7 @@ app.use(express.urlencoded({extended: true}))
 
 app.use('/api/auth',authRoutes)
 app.use('/api/user',userRoutes)
+app.use('/api/post',postRoutes)
 
 app.use((err,req,res,next)=>{
     const status = err.status || 500

@@ -1,0 +1,22 @@
+import express from 'express'
+import {createPost, deletePost, flagPost, randomPost, followingPost} from '../Controllers/Posts.js'
+import getToken from '../getToken.js'
+
+const router = express.Router()
+
+// ** Create a POST
+router.post("/",getToken,createPost)
+
+//** Delete a POST */
+router.delete("/:id",getToken,deletePost)
+
+//!! Flag a POST */
+router.put("/flag/:id",getToken,flagPost)
+
+//** Random POST */
+router.get("/rand",randomPost)
+
+//** Following POST */
+router.get("/following",getToken,followingPost)
+
+export default router
