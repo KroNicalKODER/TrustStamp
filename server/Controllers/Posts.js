@@ -1,5 +1,6 @@
 import Posts from "../Models/Posts.js";
 import User from "../models/User.js"
+import Comment from "../Models/Comments.js"
 import genError from "../error.js"
 
 export const createPost = async(req,res,next) => {
@@ -74,3 +75,20 @@ export const followingPost = async (req,res,next) => {
     }
 }
 
+export const showComment = async (req,res,next) => {
+    try {
+        const posts = await Posts.findById(req.params.id)
+        const commentIds = posts.commentedBy
+        let allComments = []
+
+        for(const commentId in commentIds) {
+            const com = Comment.findById(commentId)
+            if(com){
+                allComments.push(com)
+            }
+        }
+        res.status(200).json(allComments)
+    } catch (error) {
+        next(error)
+    }
+}

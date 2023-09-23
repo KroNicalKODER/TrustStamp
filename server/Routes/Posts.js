@@ -1,5 +1,5 @@
 import express from 'express'
-import {createPost, deletePost, flagPost, randomPost, followingPost} from '../Controllers/Posts.js'
+import {createPost, deletePost, flagPost, randomPost, followingPost, showComment} from '../Controllers/Posts.js'
 import getToken from '../getToken.js'
 
 const router = express.Router()
@@ -18,5 +18,8 @@ router.get("/rand",randomPost)
 
 //** Following POST */
 router.get("/following",getToken,followingPost)
+
+//** Show Comment */
+router.get("/comments/:id",getToken,showComment)
 
 export default router

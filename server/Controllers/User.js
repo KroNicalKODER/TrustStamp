@@ -48,7 +48,7 @@ export const save = async(req,res,next)=> {
     try {
         const postId = req.params.id
         const userId = req.user.id
-        User.findByIdAndUpdate(userId,{
+        await User.findByIdAndUpdate(userId,{
             $push : {savedPost : postId}
         })
     } catch (error) {

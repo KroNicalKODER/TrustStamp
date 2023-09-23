@@ -18,7 +18,7 @@ const PostSchema = mongoose.Schema({
         // FN - FLAGGED AND NO MORPH FOUND
         // MorphedID followed BY 'FF' - FLAGGED AND MORPHING FOUND - Eg- "FF6bedfjhdjkafkhafhex1242hg"
     },
-    commentedBy: {
+    commentedBy: {                      // ** COMMENTS IDs */
         type: [String],
     },
     likedBy: {
