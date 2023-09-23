@@ -57,7 +57,8 @@ export const followingPost = async (req,res,next) => {
     try {
         const user = await User.findById(req.user.id)
         const followingUsers = user.following
-        const posts = await Posts.aggregate[
+        // console.log(followingUsers)
+        const posts = await Posts.aggregate([
             {
                 $match: {
                     userId : { $in : followingUsers }
@@ -66,7 +67,7 @@ export const followingPost = async (req,res,next) => {
             {
                 $sample : { size: 20 }
             }
-        ]
+        ])
         res.status(200).json(posts)
     } catch (error) {
         next(error)
